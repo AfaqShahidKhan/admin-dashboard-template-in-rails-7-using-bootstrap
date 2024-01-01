@@ -1,0 +1,65 @@
+<div class="card bg-white" style="max-width: 18rem; ">
+
+  <div class="card-body">
+    <h5 class="small-card-number text-center">Profit Report</h5>
+    <div class="text-center">
+      <!-- Replace the following content with your actual chart component or embed your chart here -->
+      <canvas id="profitLossChart" width="200" height="100"></canvas>
+    </div>
+
+    <!-- Additional data after the chart in a single line -->
+    <div class="row align-items-center justify-content-between">
+      <!-- Card Title, Number, and Percentage -->
+      <div class="col-auto small-card-number">$1,500</div>
+      <div class="col-auto small-card-percentage" style="font-size: 1.2em;">+15%</div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('profitLossChart').getContext('2d');
+
+    // Original data values
+    var data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [{
+            label: 'Profit/Loss',
+            yAxisID: 'percentage',
+            data: [-5, -10, 15, -8, 10, -2, 5, -12],
+            borderColor: '#FFA510',
+            backgroundColor: 'rgba(255, 165, 16, 0.2)',
+            borderWidth: 4,
+            pointRadius: 1, // Set pointRadius to 0 to remove the dots
+        }]
+    };
+
+    var options = {
+        scales: {
+            x: {
+                display: false,
+            },
+            y: [
+                {
+                    id: 'percentage',
+                    type: 'linear',
+                    position: 'left',
+                    ticks: {
+                        max: 20,
+                        min: -20,
+                    },
+                    gridLines: {
+                        lineWidth: 0.5,
+                    }
+                }
+            ]
+        }
+    };
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options,
+    });
+});
+</script>

@@ -1,0 +1,140 @@
+    <div class="container mt-3">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="container-fluid ">
+
+            <!-- Search Bar with Button -->
+            <div class="input-group w-100 mr-3">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                <button class="btn btn-outline-success" type="button">Search</button>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="ml-auto">
+                <%= image_tag('afaqshahidkhan.jpeg', alt: 'Profile Image', class: 'rounded-circle', size: '40x40') %>                </div>
+            </div>
+        </nav>
+      <!--  <h2 class="text-dark">Online Store Dashboard</h2>
+        <p class="text-secondary">Explore the latest products and manage your shopping experience.</p> -->
+    
+
+    </div>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+                
+            <div class="col-md-8 custom-section">
+                
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Congratulations John!</h5>
+                        <p class="card-text">You have done 72% more sales today. Check your new badge in your profile.</p>
+                        <a href="#" class="btn btn-outline-info">View Badges</a>
+                    </div>
+                </div>
+
+                <canvas id="revenueChart" width="400" height="235" class="bg-white mt-4"></canvas>
+                
+                <%= render "cardsDashboard" %>
+
+
+                
+               
+            </div>
+            
+                
+            
+            <!-- Four Small Cards Section -->
+
+            <div class="col-md-4 custom-section ">
+                            
+                    <div class="container">
+                    
+                    <%= render "small_cards" %>
+                    <%= render "profitReport" %>
+                    <%= render "resultCard" %>
+            </div>
+
+            
+        </div>
+    </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('revenueChart').getContext('2d');
+
+    var data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [{
+            label: 'Revenue',
+            yAxisID: 'revenue',
+            data: [10, 5, -2, 8, -15, 10, -5, 12],
+             borderColor:'rgb(128, 131, 253)',
+            backgroundColor: 'rgb(128, 131, 253)',
+            // borderWidth: 0.5,
+            barThickness: 10,
+              borderRadius: {
+                topRight: 15,
+                topLeft: 15,
+                bottomRight: 15,
+                bottomLeft: 15,
+            },
+        }, {
+            label: 'Profit/Loss',
+            yAxisID: 'percentage',
+            data: [-5, -10, 15, -8, 10, -2, 5, -12],
+            borderColor: '#39C8E8', 
+            backgroundColor: 'rgba(49, 202, 235, 1)', 
+            // borderWidth: 0.5,
+            barThickness: 10,
+              borderRadius: {
+                topRight: 15,
+                topLeft: 15,
+                bottomRight: 15,
+                bottomLeft: 15,
+            },
+        }]
+    };
+
+    var options = {
+        scales: {
+            x: {
+                display: false,
+            },
+            y: [
+                {
+                    id: 'revenue',
+                    type: 'linear',
+                    position: 'left',
+                    gridLines: {
+                    lineWidth: 0.5, // Set the width of y-axis grid lines
+                }
+                },
+                {
+                    id: 'percentage',
+                    type: 'linear',
+                    position: 'right',
+                    ticks: {
+                        max: 20,
+                        min: -20,
+                    },
+                    gridLines: {
+                    lineWidth: 0.5, // Set the width of y-axis grid lines
+                }
+                }
+            ]
+        }
+    };
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options,
+    });
+});
+</script>

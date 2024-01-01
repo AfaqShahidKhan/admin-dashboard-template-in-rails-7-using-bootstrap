@@ -1,90 +1,122 @@
+<div class="fixed-top">
+   
+      <%= link_to root_path, class: 'btn btn-link text-white' do %>
+      <%= image_tag image_path('bookarley.png'), alt: 'Bookarley Logo', height: 40, width: 40 %>
+      <span class="ml-2" style="font-weight: bold; color: orange; font-size: 1.5rem;">Bookarley</span>
+    <% end %>
 
-  <style>
-    .graph-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-color: #f0f0f0;
-      margin: 20px auto;
-    }
+    <!-- Sidebar/Menu -->
+    <nav class="navbar navbar-expand-md navbar-light ">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="sidebar">
+        <ul class="navbar-nav flex-column">
+          <!-- Dashboard button with dropdown -->
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link', data: { toggle: 'collapse', target: '#dashboardDropdown' } do %>
+              <i class="fas fa-tachometer-alt mr-2"></i>Dashboards
+            <% end %>
+            <div class="collapse" id="dashboardDropdown">
+              <ul class="list-unstyled">
+                <li><%= link_to 'Dashboard 1', '#', class: 'nav-link' %></li>
+                <li><%= link_to 'Dashboard 2', '#', class: 'nav-link' %></li>
+              </ul>
+            </div>
+          </li>
 
-    .percentage {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-    }
+          <!-- Layouts button with dropdown -->
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link', data: { toggle: 'collapse', target: '#layoutsDropdown' } do %>
+              <i class="fas fa-th-large mr-2"></i>Layouts
+            <% end %>
+            <div class="collapse" id="layoutsDropdown">
+              <ul class="list-unstyled">
+                <li><%= link_to 'Layout 1', '#', class: 'nav-link' %></li>
+                <li><%= link_to 'Layout 2', '#', class: 'nav-link' %></li>
+              </ul>
+            </div>
+          </li>
 
-    .lines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      background: linear-gradient(to right, #4caf50 50%, transparent 50%);
-      transform: rotate(calc(var(--percentage) * 1deg));
-      transform-origin: 50% 50%;
-    }
-  </style>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-
-      <div class="graph-container">
-        <div class="percentage" id="percentage">75%</div>
-        <div class="lines" style="--percentage: 75;"></div>
+          <!-- Front Pages button with dropdown -->
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link', data: { toggle: 'collapse', target: '#frontPagesDropdown' } do %>
+              <i class="far fa-file-alt mr-2"></i>Front Pages
+            <% end %>
+            <div class="collapse" id="frontPagesDropdown">
+              <ul class="list-unstyled">
+                <li><%= link_to 'Page 1', '#', class: 'nav-link' %></li>
+                <li><%= link_to 'Page 2', '#', class: 'nav-link' %></li>
+              </ul>
+            </div>
+          </li>
+          
+        </ul>
+        
       </div>
+     
+    </nav>
+  
+    
+    <h6 class="text-grey mt-3 mb-2 ml-2">APPS & PAGES</h6>
+    <%= button_to '#', { class: 'btn btn-large mr-2', style: 'color: grey;', method: :get } do %>
+      <i class="far fa-envelope"></i> Email
+    <% end %>
 
-      <nav class="navbar navbar-expand-md navbar-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yearOptions">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="yearOptions">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="changeYear(2023)">2023</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="changeYear(2022)">2022</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="changeYear(2021)">2021</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <%= button_to '#',  { class: 'btn btn-large mr-2', style: 'color: grey;', method: :get } do %>
+      <i class="far fa-comments"></i> Chat
+    <% end %>
+    <%= button_to '#', class: 'btn btn-large', style: 'color: grey;', method: :get do %>
+      <i class="far fa-calendar"></i> Calendar
+    <% end %>
 
-      <script>
-        function changeYear(year) {
-          const percentageElement = document.getElementById('percentage');
-          const linesElement = document.querySelector('.lines');
-          const percentage = getPercentageForYear(year);
-          percentageElement.innerText = `${percentage}%`;
-          linesElement.style.setProperty('--percentage', percentage);
-        }
+    <nav class="navbar navbar-expand-md navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="sidebar">
+        <ul class="navbar-nav flex-column">
+          <!-- Account button with dropdown -->
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link', data: { toggle: 'collapse', target: '#accountSettingsDropdown' } do %>
+              <i class="fas fa-cogs  mr-2"></i>Account Setting
+            <% end %>
+            <div class="collapse" id="accountSettingsDropdown">
+              <ul class="list-unstyled">
+                <li><%= link_to 'Account 1', '#', class: 'nav-link' %></li>
+                <li><%= link_to 'Account 2', '#', class: 'nav-link' %></li>
+              </ul>
+            </div>
+          </li>
 
-        function getPercentageForYear(year) {
-          // You can replace this logic with your actual data retrieval logic
-          const yearPercentages = {
-            2023: 75,
-            2022: 67,
-            2021: 35,
-          };
-          return yearPercentages[year] || 0;
-        }
+          <!-- Layouts button with dropdown -->
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link', data: { toggle: 'collapse', target: '#authenticationDropdown' } do %>
+              <i class="fas fa-lock mr-2"></i>Authentication
+            <% end %>
+            <div class="collapse" id="authenticationDropdown">
+              <ul class="list-unstyled">
+                <li><%= link_to 'Page 1', '#', class: 'nav-link' %></li>
+                <li><%= link_to 'Page 2', '#', class: 'nav-link' %></li>
+              </ul>
+            </div>
+          </li>
 
-        // Set default year
-        changeYear(2023);
-      </script>
+          <!-- Front Pages button with dropdown -->
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link', data: { toggle: 'collapse', target: '#frontPagesDropdown' } do %>
+              <i class="far fa-file-alt mr-2"></i>Misc
+            <% end %>
+            <div class="collapse" id="frontPagesDropdown">
+              <ul class="list-unstyled">
+                <li><%= link_to 'Page 1', '#', class: 'nav-link' %></li>
+                <li><%= link_to 'Page 2', '#', class: 'nav-link' %></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+ 
 
-    </div>
-  </div>
 </div>
-

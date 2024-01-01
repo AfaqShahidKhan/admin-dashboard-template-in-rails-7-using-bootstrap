@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ @import '@fortawesome/fontawesome-free/css/all';
+ 
+@import 'font-awesome';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
