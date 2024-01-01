@@ -1,37 +1,35 @@
 <!-- app/views/home/index.html.erb -->
 <style>
-.sidebar {
-    height: 100%;
-    background-color: #fff; /* Updated to white background */
-    color: #343a40; /* Updated text color for better contrast */
+  .sidebar {
+    background-color: #fff;
+    color: #343a40;
   }
 
   .navbar-toggler-icon {
-    background-color: #343a40; /* Updated toggle button color */
+    background-color: #343a40;
   }
 
   .navbar-nav .nav-link {
-    color: #343a40; /* Updated sidebar links color */
+    color: #343a40;
   }
 
   .navbar-nav .nav-link:hover {
-   background-color: #dcddef; /* Hover color */
+    background-color: #dcddef;
   }
- 
+
   .dropdown-menu .dropdown-item {
-    color: #343a40; /* Dropdown item color */
+    color: #343a40;
   }
 
   .dropdown-menu .dropdown-item:hover {
-    background-color: #495057; /* Dropdown item hover color */
+    background-color: #495057;
   }
 
   .custom-search-box {
-    height: 60px; 
+    height: 60px;
   }
 
-  
-    /* Style for the new sections */
+  /* Style for the new sections */
   .custom-section {
     background-color: #f8f9fa;
     padding: 20px;
@@ -44,8 +42,7 @@
     color: #007bff;
   }
 
-
-   /* Style for the card section */
+  /* Style for the card section */
   .small-cards-section {
     margin-top: 20px;
   }
@@ -69,7 +66,7 @@
   }
 
   .small-card-percentage {
-    color: green; /* Change color based on gain or loss */
+    color: green;
   }
 
   .small-card-options {
@@ -77,32 +74,47 @@
     top: 10px;
     right: 10px;
   }
+
   .vertical-dots {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  display: inline-block;
-}
-.dropdown-menu {
-  right: auto;
-  left: 0;
-}
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: inline-block;
+  }
 
+  .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
 
-/* id swction */
+  /* Responsive styles */
+  @media (max-width: 767px) {
+    .sidebar {
+      display: none; /* Hide the sidebar on small screens initially */
+    }
 
+    .col-md-10 {
+      width: 80%; /* Full width for content on small screens */
+    }
+
+    .navbar-nav {
+      flex-direction: column; /* Stack the navigation items vertically */
+    }
+  }
 </style>
 
+<div class="container-fluid bg-light">
+  <div class="row">
+    <!-- Dashboard Section (2 columns) -->
+    <div class="col-md-2 bg-light sidebar">
+      <%= render "sidebar" %>
+    </div>
 
-
-
-  <div class="container-fluid bg-light">
-    <div class="row">
-                 <!-- Dashboard Section (2 columns) -->
-          <div class="col-md-2 bg-light sidebar">
-            <%= render "sidebar" %>
-          </div>
-      <div class="col-md-10 bg-light">
+    <div class="col-md-10 bg-light">
+      <!-- Add a container for the dashboard content -->
+      <div class="container">
         <%= render "dashboard_body" %>
       </div>
-   </div>
+    </div>
   </div>
+</div>
+
