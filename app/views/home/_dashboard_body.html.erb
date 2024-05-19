@@ -1,69 +1,77 @@
-    
-    <div class="container mt-3">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <div class="container-fluid ">
+<style>
+    @media (max-width: 767px) {
+        /* Styles for mobile view */
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .ml-auto img {
+            display: none; /* Hide profile image in mobile view */
+        }
+
+        /* Reduce font size for mobile view */
+        .card-title,
+        .card-text,
+        .btn {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="container mt-3">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
 
             <!-- Search Bar with Button -->
             <div class="input-group w-100 mr-3">
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
-                <button class="btn btn-outline-success" type="button">Search</button>
+                    <button class="btn btn-outline-success" type="button">Search</button>
                 </div>
             </div>
 
             <!-- Profile Image -->
             <div class="ml-auto">
-                <%= image_tag('afaqshahidkhan.jpeg', alt: 'Profile Image', class: 'rounded-circle', size: '40x40') %>                </div>
+                <%= image_tag('afaqshahidkhan.jpeg', alt: 'Profile Image', class: 'rounded-circle', size: '40x40') %>
             </div>
-        </nav>
-      <!--  <h2 class="text-dark">Online Store Dashboard</h2>
-        <p class="text-secondary">Explore the latest products and manage your shopping experience.</p> -->
-    
+        </div>
+    </nav>
+</div>
 
-    </div>
+<div class="container-fluid">
+    <div class="row">
 
+        <div class="col-md-8 custom-section">
 
-
-    <div class="container-fluid">
-        <div class="row">
-
-                
-            <div class="col-md-8 custom-section">
-                
-                <div class="card w-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Congratulations John!</h5>
-                        <p class="card-text">You have done 72% more sales today. Check your new badge in your profile.</p>
-                        <a href="#" class="btn btn-outline-info">View Badges</a>
-                    </div>
+            <div class="card w-100">
+                <div class="card-body">
+                    <h5 class="card-title">Congratulations John!</h5>
+                    <p class="card-text">You have done 72% more sales today. Check your new badge in your profile.</p>
+                    <a href="#" class="btn btn-outline-info">View Badges</a>
                 </div>
-
-                <canvas id="revenueChart" width="400" height="235" class="bg-white mt-4"></canvas>
-                
-                <%= render "cardsDashboard" %>
-
-
-                
-               
-            </div>
-            
-                
-            
-            <!-- Four Small Cards Section -->
-
-            <div class="col-md-4 custom-section ">
-                            
-                    <div class="container">
-                    
-                    <%= render "small_cards" %>
-                    <%= render "profitReport" %>
-                    <%= render "resultCard" %>
             </div>
 
-            
+            <canvas id="revenueChart" class="bg-white mt-4"></canvas>
+
+            <%= render "cardsDashboard" %>
+        </div>
+
+        <!-- Four Small Cards Section -->
+
+        <div class="col-md-4 custom-section">
+            <div class="container">
+                <%= render "small_cards" %>
+                <%= render "profitReport" %>
+                <%= render "resultCard" %>
+            </div>
         </div>
     </div>
-
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -77,28 +85,16 @@ document.addEventListener('DOMContentLoaded', function () {
             data: [10, 5, -2, 8, -15, 10, -5, 12],
              borderColor:'rgb(128, 131, 253)',
             backgroundColor: 'rgb(128, 131, 253)',
-            // borderWidth: 0.5,
             barThickness: 10,
-              borderRadius: {
-                topRight: 15,
-                topLeft: 15,
-                bottomRight: 15,
-                bottomLeft: 15,
-            },
+              borderRadius: 15,
         }, {
             label: 'Profit/Loss',
             yAxisID: 'percentage',
             data: [-5, -10, 15, -8, 10, -2, 5, -12],
             borderColor: '#39C8E8', 
-            backgroundColor: 'rgba(49, 202, 235, 1)', 
-            // borderWidth: 0.5,
+            backgroundColor: 'rgba(49, 202, 235, 1)',
             barThickness: 10,
-              borderRadius: {
-                topRight: 15,
-                topLeft: 15,
-                bottomRight: 15,
-                bottomLeft: 15,
-            },
+            borderRadius: 15,
         }]
     };
 
@@ -113,8 +109,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     type: 'linear',
                     position: 'left',
                     gridLines: {
-                    lineWidth: 0.5, // Set the width of y-axis grid lines
-                }
+                        lineWidth: 0.5,
+                    }
                 },
                 {
                     id: 'percentage',
@@ -125,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         min: -20,
                     },
                     gridLines: {
-                    lineWidth: 0.5, // Set the width of y-axis grid lines
-                }
+                        lineWidth: 0.5,
+                    }
                 }
             ]
         }
